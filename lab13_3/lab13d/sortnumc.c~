@@ -1,0 +1,17 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include "flexarray.h"
+
+int main() {
+    flexarray flex = flexarray_new();
+    int scanned;
+    while (1 == scanf("%d", &scanned)) {
+        printf("Step\n");
+        flexarray_append(flex, scanned);
+        flexarray_print(flex);
+    }
+    printf("Sorted\n");
+    flexarray_sort(flex);
+    flexarray_print(flex);
+    return EXIT_SUCCESS;
+}

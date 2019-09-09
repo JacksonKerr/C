@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int id;
+    double s1, s2, s3;
+    double smallest;
+    int winId = 0;
+    double winScore = 0;
+    while (4 == scanf("%d%lf%lf%lf", &id, &s1, &s2, &s3)) {
+        smallest = s3;
+        if (s1 < s2 && s1 < s3) { smallest = s1;}
+        if (s2 < s1 && s2 < s3) { smallest = s2;}
+        if (winScore < (s1+s2+s3-smallest)/2) {
+            winScore = (s1+s2+s3-smallest)/2;
+            winId = id;
+        }
+    }
+    printf("%d\n", winId);
+    
+    return EXIT_SUCCESS;
+}

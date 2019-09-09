@@ -1,0 +1,13 @@
+set key left
+set term postscript color solid
+set title "Sort comparison - jkerr"
+set xlabel "Number of items"
+set ylabel "Time"
+plot "selection-sort.random" with linespoints, \
+"selection-sort.sorted" with linespoints, \
+"selection-sort.partially_sorted" with linespoints, \
+"selection-sort.reversed" with linespoints, \
+"insertion-sort.random" with linespoints, \
+"insertion-sort.sorted" with linespoints, \
+"insertion-sort.partially_sorted" with linespoints, \
+"insertion-sort.reversed" with linespoints

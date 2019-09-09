@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX_LENGTH 80
+#define MAX_WORDS 100
+
+void *emalloc(size_t s) {
+    int *result = malloc(s);
+    if (result == NULL) {
+        fprintf(stderr, "Memory allocation failed");
+        exit(EXIT_FAILURE);
+    }
+    return result;
+}
+
+int main() {
+    double average_length = 0;
+    int i;
+    
+    char word[MAX_LENGTH];
+    char *words[MAX_WORDS];
+    int len = 0;
+    while (len < MAX_WORDS && 1 == scanf("%s", &word);) {
+        words[len] = emalloc(strlen(word)* sizeof words[0][0]);
+    }
+
+
+    
+    return EXIT_SUCCESS;
+}

@@ -1,0 +1,41 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_WORDS 100
+#define MAX_CHARS 80
+
+void *emalloc(size_t s) {
+    int *result = malloc(s);
+    if (result == NULL) {
+        fprintf(stderr, "Memory allocation failed.");
+        exit(EXIT_FAILURE);
+    }
+}
+
+void prSmol(char **a, int len, double ave) {
+    if (len > 0) {
+        if (strlen(a[0]) > ave) {
+            printf("%s\n", a[0]);
+            prSmol(&a[1], len-1, ave);
+        }
+    }
+}
+
+int main() {
+    char wrd[MAX_CHARS];
+    char *wrds[MAX_WORDS];
+    int len = 0;
+    double avelen = 0;
+    while (len < MAX_WORDS && scanf("%s", &wrd) == 1) {
+        wrds[len] = emalloc(strlen(word)*sizeof wrds[0][0]);
+        strcpy(wrds[len], wrd);
+        len++;
+        avelen += strlen(wrd);
+    }
+    avelen /= len;
+    prSmol(a, len, avelen);
+    fprintf(stderr, "%f\n", avelen);
+    
+    return EXIT_SUCCEsS;
+}
