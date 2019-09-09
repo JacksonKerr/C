@@ -52,11 +52,11 @@ int bst_search(bst b, char* str) {
     if (b != NULL) {
         /* If str is less that b->str, search left child */
         if (0 > strcmp(str, b->str)) {
-            return bst_insert(b->lchild, str);
+            bst_insert(b->lchild, str);
         }
         /* If str is greater than b->str, search right child */
         else if (0 < strcmp(str, b->str)) {
-            return bst_search(b->rchild, str);
+            bst_search(b->rchild, str);
         } else {
             return 1; /* Return 1 if strings are equal */
         }
@@ -82,5 +82,39 @@ void bst_postorder(bst b, void f(char* str)) {
 }
 /* Delete a string from the bst */
 bst bst_delete(bst b, char* str) {
+    bst currNode;
+    char* temp;
+
+    /* If string is less than b->str, delete from left child */
+    if (0 > strcmp(str, b->str)) {
+        b->lchild = bst_delete(b->lchild, str);
+        return b;
+    }
+    /* If str is greater than b->str, delete from right child */
+    else if (0 < strcmp(str, b->str)) {
+        b->rchild = bst_delete(b->rchild, str);
+        return b;
+    }
+
+
+    if (b->lchild == NULL && b->rchild == NULL) {
+        free(b->str);
+        free(b);
+        return NULL;
+    }
+    if (b->lchild == NULL || b->rchild == NULL) {
+        free(b->str);
+        free(b);
+        return (b->lchild != NULL ? b->lchild : b->rchild);
+    }
+    if (b->lchild != NULL || b->rchild != NULL) {
+        currNode = b->rchild;
+        while (currNode->lchild != NULL) {
+            currNode = currNode->lchild;
+        }
+        temp = b->str;
+        b->str = currNode->str;
+        currNode->str = temp;
+    }
     return b;
 }
