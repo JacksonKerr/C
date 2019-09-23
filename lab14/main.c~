@@ -1,7 +1,0 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include "bst.h"
-
-int main() {
-    return EXIT_SUCCESS;
-}
