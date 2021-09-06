@@ -1,5 +1,0 @@
-#ifndef QUICKSORT_H_
-#define QUICKSORT_H_
-
-extern void quickSort();
-extern 
